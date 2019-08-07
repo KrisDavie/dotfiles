@@ -3,7 +3,7 @@
 DOTFILES_DIR="~/git/dotfiles"
 DOTFILES_OLD="~/.dotfiles_old_"$(date --iso-8601)
 
-FILES="bashrc bash_profile zshrc tmux.conf"    # list of files/folders to symlink in homedir
+FILES="bashrc bash_profile zshrc tmux.conf gitconfig"    # list of files/folders to symlink in homedir
 
 cd ${DOTFILES_DIR}
 

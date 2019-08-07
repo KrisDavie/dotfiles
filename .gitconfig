@@ -1,0 +1,8 @@
+[user]
+	name = KrisDavie
+	email = kristofer.davie@kuleuven.vib.be
+	signingkey = AF2406BFCD3ECF6C
+[credential]
+	helper = libsecret
+[commit]
+	gpgsign = true
