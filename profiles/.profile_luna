@@ -1,0 +1,29 @@
+whois(){
+    print 
+    if [[ ${1} =~ ^[rRuU][0-9]{7} ]]; then
+        case "${2}" in
+            name)
+                result=$(ldapsearch -x -h ldap.kuleuven.be -b"uid=${1},ou=people,dc=kuleuven,dc=be" | grep "^cn:" | sed 's/^cn://')
+                ;;
+            email)
+                result=$(ldapsearch -x -h ldap.kuleuven.be -b"uid=${1},ou=people,dc=kuleuven,dc=be" | grep "^mail:" | sed 's/^mail://')
+                ;;
+            *)
+                ldapsearch -x -h ldap.kuleuven.be -b"uid=${1},ou=people,dc=kuleuven,dc=be"
+                return 0
+                ;;
+        esac
+
+        if [[ ${result: 0:1} == ":" ]]; then
+            echo ${result: 2} | base64 -d
+            printf "\n"
+        else
+            echo ${result: 1}
+            return 0
+        fi
+
+    else
+        echo 'Incorrect user number format'
+        return 1
+    fi
+}
