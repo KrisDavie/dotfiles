@@ -1,6 +1,6 @@
 export ZSH="${HOME}/.oh-my-zsh"
 
-export PATH=~/.local/bin/:${PATH}
+export PATH=${HOME}/.local/bin/:${PATH}
 
 ZSH_THEME="spaceship"
 
@@ -22,7 +22,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Fix VSC module system
 if [[ ${VSC_INSTITUTE:-"none"} == "leuven" ]]; then
-    source ~/.zsh/.zsh_module_fix
+    source ${HOME}/.zsh/.zsh_module_fix
 fi
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=10"
