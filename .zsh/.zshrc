@@ -10,6 +10,7 @@ plugins=(
   sudo
   tmux
   wd
+  you-should-use
   z
   zsh-autosuggestions
   zsh-syntax-highlighting
@@ -21,7 +22,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Fix VSC module system
 if [ ${VSC_INSTITUTE} == "leuven" ]; then
-    source ~/.zsh_module_fix
+    source ~/.zsh/.zsh_module_fix
 fi
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=10"
