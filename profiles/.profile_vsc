@@ -9,7 +9,7 @@ case "${VSC_ARCH_LOCAL}" in
             module use ${BIOMED_MODULES_BASE_DIR}/${VSC_ARCH_LOCAL}_centos${CENTOS_MAJOR_VERSION}/modulefiles
 
         else
-            echo "\e[1m\e[31mCould not detect OS version for ${VSC_ARCH_LOCAL} architecture. Biomed modules will not be loaded.\e[39m\e[21m"
+            echo "\e[1m\e[31mCould not detect OS version for ${VSC_ARCH_LOCAL} architecture. Biomed modules will not be loaded.\e[39m\e[21m" 1>&2
         fi
         ;;
 
@@ -24,12 +24,12 @@ case "${VSC_ARCH_LOCAL}" in
             module use ${BIOMED_MODULES_BASE_DIR}/modulefiles
 
         else
-            echo "\e[1m\e[31mCould not detect OS version for ${VSC_ARCH_LOCAL} architecture. Biomed modules will not be loaded.\e[39m\e[21m"
+            echo "\e[1m\e[31mCould not detect OS version for ${VSC_ARCH_LOCAL} architecture. Biomed modules will not be loaded.\e[39m\e[21m" 1>&2
             
         fi
         ;;
     *)
-        echo "\e[1m\e[31mDid not recognise ${VSC_ARCH_LOCAL} architecture. Biomed modules will not be loaded.\e[39m\e[21m"
+        echo "\e[1m\e[31mDid not recognise ${VSC_ARCH_LOCAL} architecture. Biomed modules will not be loaded.\e[39m\e[21m" 1>&2
         ;;
 esac
 

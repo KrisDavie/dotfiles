@@ -38,9 +38,9 @@ if [ -f ${ZSH_PATH} ] && [ -z ${NONINT} ]; then
     if [ ${ZSH_VER_MAJOR} -ge 5 ] && [ ${ZSH_VER_MINOR} -ge 2 ]; then
         exec zsh -d
     else
-        echo "\e[1m\e[31mZsh version ${ZSH_VER_MAJOR}.${ZSH_VER_MINOR} is not high enough.\e[39m\e[21m"
+        echo "\e[1m\e[31mZsh version ${ZSH_VER_MAJOR}.${ZSH_VER_MINOR} is not high enough.\e[39m\e[21m" 1>&2
     fi
 else
-    echo "\e[1m\e[31mCould not find Zsh in your path! \e[39m\e[21m"
+    echo "\e[1m\e[31mCould not find Zsh in your path! \e[39m\e[21m" 1>&2
 fi
 
