@@ -1,7 +1,7 @@
 #!/bin/bash
 
 DOTFILES_DIR="${HOME}/git/dotfiles"
-DOTFILES_OLD="${HOME}/.dotfiles_old_"$(date --iso-8601)
+DOTFILES_OLD="${HOME}/.dotfiles_old_"$(date +%Y%M%d_%H%M%S)
 
 DIRS=".ssh .zsh"
 FILES=".bashrc .bash_profile .gitconfig .ssh/config .tmux.conf .zshenv .zsh/.zshrc"    # list of files/folders to symlink in homedir
