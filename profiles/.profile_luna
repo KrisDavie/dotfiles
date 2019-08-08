@@ -27,3 +27,20 @@ whois(){
         return 1
     fi
 }
+
+ZSH_PATH=$(which zsh)
+if [ -f ${ZSH_PATH} ]; then
+    ZSH_VER=$(zsh --version)
+    ZSH_VER=${ZSH_VER%.*}
+    ZSH_VER_MINOR=${ZSH_VER:6}
+    ZSH_VER=${ZSH_VER%.*}
+    ZSH_VER_MAJOR=${ZSH_VER:4}
+    if [ ${ZSH_VER_MAJOR} -ge 5 ] && [ ${ZSH_VER_MINOR} -ge 2 ]; then
+        exec zsh -d
+    else
+        echo "\e[1m\e[31mZsh version ${ZSH_VER_MAJOR}.${ZSH_VER_MINOR} is not high enough.\e[39m\e[21m"
+    fi
+else
+    echo "\e[1m\e[31mCould not find Zsh in your path! \e[39m\e[21m"
+fi
+

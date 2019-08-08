@@ -21,7 +21,7 @@ export ZSH_COMPDUMP="~/.cache/zsh"
 source $ZSH/oh-my-zsh.sh
 
 # Fix VSC module system
-if [ ${VSC_INSTITUTE} == "leuven" ]; then
+if [[ ${VSC_INSTITUTE:-"none"} == "leuven" ]]; then
     source ~/.zsh/.zsh_module_fix
 fi
 
