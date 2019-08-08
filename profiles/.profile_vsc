@@ -16,7 +16,9 @@ case "${VSC_ARCH_LOCAL}" in
     haswell|ivybridge)
         if [ ${CENTOS_MAJOR_VERSION} = 7 ]; then
             module use ${BIOMED_MODULES_BASE_DIR}/haswell_centos${CENTOS_MAJOR_VERSION}/modulefiles
-            module load zsh/5.7.1-foss-2018a
+            if [ -z ${NONINT} ]; then
+                module load zsh/5.7.1-foss-2018a
+            fi
 
         elif [ ${CENTOS_MAJOR_VERSION} = 6 ]; then
             module use ${BIOMED_MODULES_BASE_DIR}/modulefiles

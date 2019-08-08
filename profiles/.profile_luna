@@ -29,7 +29,7 @@ whois(){
 }
 
 ZSH_PATH=$(which zsh)
-if [ -f ${ZSH_PATH} ]; then
+if [ -f ${ZSH_PATH} ] && [ -z ${NONINT} ]; then
     ZSH_VER=$(zsh --version)
     ZSH_VER=${ZSH_VER%.*}
     ZSH_VER_MINOR=${ZSH_VER:6}

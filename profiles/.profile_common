@@ -1,2 +1,6 @@
 export PATH=${HOME}/.local/bin:${PATH}
 
+# Detect if we are just running a command by ssh, then don't launch zsh
+if [[ "$-" == *"c"* ]]; then
+    NONINT="true"
+fi
