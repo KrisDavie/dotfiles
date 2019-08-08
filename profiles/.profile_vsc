@@ -32,5 +32,8 @@ case "${VSC_ARCH_LOCAL}" in
         echo "\e[1m\e[31mDid not recognise ${VSC_ARCH_LOCAL} architecture. Biomed modules will not be loaded.\e[39m\e[21m" 1>&2
         ;;
 esac
+        
+if [ -z ${NONINT} ]; then
+    exec zsh -d
+fi
 
-exec zsh -d
