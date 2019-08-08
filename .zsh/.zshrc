@@ -16,8 +16,6 @@ plugins=(
   zsh-syntax-highlighting
 )
 
-export ZSH_COMPDUMP="~/.cache/zsh"
-
 source $ZSH/oh-my-zsh.sh
 
 # Fix VSC module system
