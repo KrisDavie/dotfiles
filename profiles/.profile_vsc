@@ -7,7 +7,9 @@ case "${VSC_ARCH_LOCAL}" in
     skylake)
         if [ ${CENTOS_MAJOR_VERSION} = 7 ]; then
             module use ${BIOMED_MODULES_BASE_DIR}/${VSC_ARCH_LOCAL}_centos${CENTOS_MAJOR_VERSION}/2018a/modules/all
-
+            if [ -z ${NONINT} ]; then
+                module load zsh/5.7.1-foss-2018a
+            fi
         else
             echo "\e[1m\e[31mCould not detect OS version for ${VSC_ARCH_LOCAL} architecture. Biomed modules will not be loaded.\e[39m\e[21m" 1>&2
         fi
