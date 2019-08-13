@@ -21,7 +21,7 @@ source $ZSH/oh-my-zsh.sh
 # Fix VSC module system
 if [[ ${VSC_INSTITUTE:-"none"} == "leuven" ]]; then
     source ${HOME}/.zsh/.zsh_module_fix
-    module load tmux/2.9a-foss-2018a
+    module load tmux/2.9a-GCCcore-6.4.0
 fi
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=10"
