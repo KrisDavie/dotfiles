@@ -1,3 +1,9 @@
+# This fixes VSCodes integrated terminal which provides a shell via the pre-established ssh <host> bash command
+if [[ !	-z ${VSCODE_IPC_HOOK_CLI} ]]; then
+    source /etc/profile.d/modules.sh
+fi
+
+
 if [ -z ${NONINT} ]; then
     export BIOMED_MODULES_BASE_DIR=/data/leuven/software/biomed
     # This seems to be the easiest way to get this information and it works across all nodes and CentOS versions
