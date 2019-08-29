@@ -1,19 +1,17 @@
-export BIOMED_MODULES_BASE_DIR=/data/leuven/software/biomed
-
-# This seems to be the easiest way to get this information and it works across all nodes and CentOS versions
-export CENTOS_MAJOR_VERSION=$(python -c "import platform; print(platform.linux_distribution()[1].split('.')[0])")
-
-if [ -z ${VSC_ARCH_LOCAL} ] | [ -z ${CENTOS_MAJOR_VERSION} ]; then
-    echo "Error detecting architecture or OS"
-    echo "\tArchitecture: ${VSC_ARCH_LOCAL}"
-    echo "\tCentOS Version: ${CENTOS_MAJOR_VERSION}"
-    NONINT="true"
-else
-    module use ${BIOMED_MODULES_BASE_DIR}/${VSC_ARCH_LOCAL}_centos${CENTOS_MAJOR_VERSION}/2018a/modules/all
-    module load zsh/5.7.1-foss-2018a
-fi
-
 if [ -z ${NONINT} ]; then
-    exec zsh -d
+    export BIOMED_MODULES_BASE_DIR=/data/leuven/software/biomed
+    # This seems to be the easiest way to get this information and it works across all nodes and CentOS versions
+    export CENTOS_MAJOR_VERSION=$(python -c "import platform; print(platform.linux_distribution()[1].split('.')[0])")
+
+    if [ -z ${VSC_ARCH_LOCAL} ] | [ -z ${CENTOS_MAJOR_VERSION} ]; then
+        echo "Error detecting architecture or OS"
+        echo "\tArchitecture: ${VSC_ARCH_LOCAL}"
+        echo "\tCentOS Version: ${CENTOS_MAJOR_VERSION}"
+        NONINT="true"
+    else
+        module use ${BIOMED_MODULES_BASE_DIR}/${VSC_ARCH_LOCAL}_centos${CENTOS_MAJOR_VERSION}/2018a/modules/all
+        module load zsh/5.7.1-foss-2018a
+    fi
+        exec zsh -d
 fi
 
