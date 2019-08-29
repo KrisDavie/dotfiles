@@ -3,38 +3,16 @@ export BIOMED_MODULES_BASE_DIR=/data/leuven/software/biomed
 # This seems to be the easiest way to get this information and it works across all nodes and CentOS versions
 export CENTOS_MAJOR_VERSION=$(python -c "import platform; print(platform.linux_distribution()[1].split('.')[0])")
 
-case "${VSC_ARCH_LOCAL}" in
-    skylake)
-        if [ ${CENTOS_MAJOR_VERSION} = 7 ]; then
-            module use ${BIOMED_MODULES_BASE_DIR}/${VSC_ARCH_LOCAL}_centos${CENTOS_MAJOR_VERSION}/2018a/modules/all
-            if [ -z ${NONINT} ]; then
-                module load zsh/5.7.1-foss-2018a
-            fi
-        else
-            echo "\e[1m\e[31mCould not detect OS version for ${VSC_ARCH_LOCAL} architecture. Biomed modules will not be loaded.\e[39m\e[21m" 1>&2
-        fi
-        ;;
+if [ -z ${VSC_ARCH_LOCAL} ] | [ -z ${CENTOS_MAJOR_VERSION} ]; then
+    echo "Error detecting architecture or OS"
+    echo "\tArchitecture: ${VSC_ARCH_LOCAL}"
+    echo "\tCentOS Version: ${CENTOS_MAJOR_VERSION}"
+    NONINT="true"
+else
+    module use ${BIOMED_MODULES_BASE_DIR}/${VSC_ARCH_LOCAL}_centos${CENTOS_MAJOR_VERSION}/2018a/modules/all
+    module load zsh/5.7.1-foss-2018a
+fi
 
-    haswell|ivybridge)
-        if [ ${CENTOS_MAJOR_VERSION} = 7 ]; then
-            module use ${BIOMED_MODULES_BASE_DIR}/haswell_centos${CENTOS_MAJOR_VERSION}/2018a/modules/all
-            if [ -z ${NONINT} ]; then
-                module load zsh/5.7.1-foss-2018a
-            fi
-
-        elif [ ${CENTOS_MAJOR_VERSION} = 6 ]; then
-            module use ${BIOMED_MODULES_BASE_DIR}/modulefiles
-
-        else
-            echo "\e[1m\e[31mCould not detect OS version for ${VSC_ARCH_LOCAL} architecture. Biomed modules will not be loaded.\e[39m\e[21m" 1>&2
-            
-        fi
-        ;;
-    *)
-        echo "\e[1m\e[31mDid not recognise ${VSC_ARCH_LOCAL} architecture. Biomed modules will not be loaded.\e[39m\e[21m" 1>&2
-        ;;
-esac
-        
 if [ -z ${NONINT} ]; then
     exec zsh -d
 fi
