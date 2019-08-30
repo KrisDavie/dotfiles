@@ -1,6 +1,8 @@
 # This fixes VSCodes integrated terminal which provides a shell via the pre-established ssh <host> bash command
-if [[ !	-z ${VSCODE_IPC_HOOK_CLI} ]]; then
-    source /etc/profile.d/modules.sh
+# It also allows us to load modules for the VScode env
+if [[ !	-z ${VSCODE_IPC_HOOK_CLI} ]] | [[ ! -z ${VSCODE_AGENT_FOLDER} ]]; then
+    . /etc/profile.d/modules.sh
+    unset NONINT
 fi
 
 
@@ -16,8 +18,13 @@ if [ -z ${NONINT} ]; then
         NONINT="true"
     else
         module use ${BIOMED_MODULES_BASE_DIR}/${VSC_ARCH_LOCAL}_centos${CENTOS_MAJOR_VERSION}/2018a/modules/all
-        module load zsh/5.7.1-foss-2018a
     fi
+
+    if [ -z ${VSCODE_AGENT_FOLDER} ]; then
+        module load zsh/5.7.1-foss-2018a
         exec zsh -d
+    else
+        . ~/.zsh/.zsh_module_load bash
+    fi
 fi
 

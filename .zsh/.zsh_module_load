@@ -1,0 +1,8 @@
+if [[ ${VSC_INSTITUTE_CLUSTER} == 'tier3' ]]; then
+	. /vsc-hard-mounts/leuven-data/software/biomed/haswell_centos7/2018a/software/Lmod/7.8.16-GCCcore-6.4.0/lmod/7.8.16/init/${1}
+else
+	. /usr/share/lmod/lmod/init/${1}
+fi
+
+module load tmux/2.9a-GCCcore-6.4.0
+module load git/2.23.0-GCCcore-6.4.0

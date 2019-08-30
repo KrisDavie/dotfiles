@@ -20,12 +20,11 @@ plugins=(
   zsh-syntax-highlighting
 )
 
-source $ZSH/oh-my-zsh.sh
+. $ZSH/oh-my-zsh.sh
 
-# Fix VSC module system
+# Load VSC module system
 if [[ ${VSC_INSTITUTE:-"none"} == "leuven" ]]; then
-    source ${HOME}/.zsh/.zsh_module_fix
-    module load tmux/2.9a-GCCcore-6.4.0
+    . ${HOME}/.zsh/.zsh_module_load zsh
 fi
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=10"

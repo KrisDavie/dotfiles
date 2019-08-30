@@ -1,5 +1,0 @@
-if [[ ${VSC_INSTITUTE_CLUSTER} == 'tier3' ]]; then
-	source /vsc-hard-mounts/leuven-data/software/biomed/haswell_centos7/2018a/software/Lmod/7.8.16-GCCcore-6.4.0/lmod/7.8.16/init/zsh
-else
-	source /usr/share/lmod/lmod/init/zsh
-fi
