@@ -1,6 +1,6 @@
 export PATH=${HOME}/.local/bin:${PATH}
 
 # Detect if we are in an interactive shell
-if [[ ! "$-" =~ "i" ]]; then
+if [[ ! "$-" =~ "i" ]] || [[ -z $TERM ]]; then
     NONINT="true"
 fi

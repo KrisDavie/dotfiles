@@ -1,7 +1,7 @@
 # This fixes VSCodes integrated terminal which provides a shell via the pre-established ssh <host> bash command
 # It also allows us to load modules for the VScode env
 if [[ !	-z ${VSCODE_IPC_HOOK_CLI} ]] | [[ ! -z ${VSCODE_AGENT_FOLDER} ]]; then
-    . /etc/profile.d/modules.sh
+    . /etc/profile.d/z01_modules.sh
     unset NONINT
 fi
 
